@@ -158,37 +158,6 @@
 
 - [Day 1-4](1-Lesson-Plans/24-Final-Project/LessonPlan.md)
 
-### Supplementary Lesson Plans:
 
-In the event that you have an issue with Azure Lab Services and are not able to access lab environments, you can use the following [supplemental lesson plans](1-Lesson-Plans/XX-Supplemental-LPs) as alternatives to the scheduled class. 
-
-These lesson plans all require that you use [version 1.2 or later](https://app.vagrantup.com/cybersecurity/boxes/UbuntuVM/versions/1.2.3) of the Vagrant virtual machine. 
-
-These lesson plans are designed to minimize preparation time. 
-
-- The Git, Networking and Command Line CTF lesson plans are activity-based. Students will work on a single large activity throughout the day. If you are unfamiliar with Git, you may need to do some additional prep to familiarize yourself with the topic for the Git CTF. 
-
-- The Web Vulnerabilities lesson plan is a series of review activities. Prep time should be minimal since the concepts were previously covered in Unit 15.  
-
-- The Container Security lesson plan contains new content that will require some preparation. If you have a background in Cloud or DevSecOps, preparation should be minimal. 
-
-- The Python lessons are brand new content. However, the activities are fairly straightforward and do not require heavy infrastructure.
-
-Depending on where your class is in the course, you can use the following lesson plans: 
-
-- [Git CTF](1-Lesson-Plans/XX-Supplemental-LPs/Git-CTF) can be completed anytime after Unit 3. 
-
-- [Python Basics](1-Lesson-Plans/XX-Supplemental-LPs/Python) can be completed anytime after Unit 3. 
-
-- [Command Line CTF](1-Lesson-Plans/XX-Supplemental-LPs/cmd-CTF) can be completed anytime after Unit 6. 
-
-- [Network CTF](1-Lesson-Plans/XX-Supplemental-LPs/Networking-CTF) can be completed anytime after Unit 9.  
-
-- [Web Vulnerabilities Review](1-Lesson-Plans/XX-Supplemental-LPs/Web-Vulns-Review) can be completed anytime after Unit 15. 
-
-- [Container Security](1-Lesson-Plans/XX-Supplemental-LPs/Container-Security) can be completed anytime after Unit 15. 
-
-
----
 
 © 2021 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.  
