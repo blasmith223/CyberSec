@@ -1,18 +1,3 @@
-## Trilogy Cybersecurity Curriculum
-
-*“To teach is to learn twice.” —Joseph Joubert*
-
-
-### Instructor and TA Pre-work
-
-* Please read through the following documents as well as all linked files within them prior to teaching the program. 
-
-- [Preparing for and Delivering Class](00-Teaching-Staff-Prework/Preparing-for-and-Delivering-Class.md)
-  - [Online Strategies](00-Teaching-Staff-Prework/OnlineStrategies.md)
-  - [First Day Checklist](00-Teaching-Staff-Prework/First-Day-Checklist.md)
-
-- [Technical Lab Solutions Used in This Program](00-Teaching-Staff-Prework/Technical-Lab-Solutions.md)
-  - [Up and Running with Azure](00-Teaching-Staff-Prework/Up-and-Running-with-Azure.md)
 
 
 ### [Unit 1: Cybersecurity 101](1-Lesson-Plans/01-Cybersecurity-101/readme.md)
