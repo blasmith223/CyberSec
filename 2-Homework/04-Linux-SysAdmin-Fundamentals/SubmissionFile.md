@@ -10,27 +10,37 @@ Save and submit the completed file for your homework submission.
 1. Permissions on `/etc/shadow` should allow only `root` read and write access.
 
     - Command to inspect permissions:
+sysadmin@UbuntuDesktop:~$ ls -l /etc/shadow
+    -rw------- 1 root shadow 4184 Mar 19 13:00 /etc/shadow
 
     - Command to set permissions (if needed):
+    sudo chmod u=rw-,g=-,o=-shadow
 
 2. Permissions on `/etc/gshadow` should allow only `root` read and write access.
 
     - Command to inspect permissions:
+    sysadmin@UbuntuDesktop:~$ ls -l /etc/gshadow
+    -rw------- 1 root shadow 1277 Mar 19 13:01 /etc/gshadow
 
     - Command to set permissions (if needed):
+     sudo chmod u=rw-,g=-,o=- gshadow
 
 3. Permissions on `/etc/group` should allow `root` read and write access, and allow everyone else read access only.
 
     - Command to inspect permissions:
-
+    sysadmin@UbuntuDesktop:~$ ls -l /etc/group
+    -rw-r--r-- 1 root root 1564 Mar 19 13:01 /etc/group
     - Command to set permissions (if needed):
+    sudo chmod u=rw,g=r,o=r group
 
 4. Permissions on `/etc/passwd` should allow `root` read and write access, and allow everyone else read access only.
 
     - Command to inspect permissions:
+    sysadmin@UbuntuDesktop:~$ ls -l /etc/passwd
+    -rw-r--r-- 1 root root 3746 Mar 19 13:01 /etc/passwd
 
     - Command to set permissions (if needed):
-
+    sudo chmod u=rw,g=r,o=r passwd
 ### Step 2: Create User Accounts
 
 1. Add user accounts for `sam`, `joe`, `amy`, `sara`, and `admin`.
