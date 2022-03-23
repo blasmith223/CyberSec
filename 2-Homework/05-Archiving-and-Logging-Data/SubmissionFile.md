@@ -9,10 +9,12 @@ Save and submit the completed file for your homework submission.
 ### Step 1: Create, Extract, Compress, and Manage tar Backup Archives
 
 1. Command to **extract** the `TarDocs.tar` archive to the current directory:
-
+tar xvvf TarDocs.tar -C ~/Projects/
 2. Command to **create** the `Javaless_Doc.tar` archive from the `TarDocs/` directory, while excluding the `TarDocs/Documents/Java` directory:
+tar cvf Javaless_Docs.tar --exclude="TarDocs/Documents/Java" TarDocs/
 
 3. Command to ensure `Java/` is not in the new `Javaless_Docs.tar` archive:
+tar -tvf Javaless_Docs.tar | grep "java"
 
 **Bonus** 
 - Command to create an incremental archive called `logs_backup_tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
@@ -20,34 +22,42 @@ Save and submit the completed file for your homework submission.
 #### Critical Analysis Question
 
 - Why wouldn't you use the options `-x` and `-c` at the same time with `tar`?
-
+C is to creates a file and x is to extract file. They are basically the opposite of each other.
 ---
 
 ### Step 2: Create, Manage, and Automate Cron Jobs
 
 1. Cron job for backing up the `/var/log/auth.log` file:
+0 6 * * 3 tar -cvf var/backup/auth_backup.tgz /var/log/auth.log >/dev/null 2>&1
+5 6 * * 3 gzip /auth_backup.tgz >/dev/null 2>&1
 
----
 
 ### Step 3: Write Basic Bash Scripts
 
 1. Brace expansion command to create the four subdirectories:
-
+~/backups$ mkdir {freemem,diskuse,openlist,freedisk}
 2. Paste your `system.sh` script edits below:
 
     ```bash
     #!/bin/bash
-    [Your solution script contents here]
+    #!/bin/ba
+free -h > ~/backups/freemem/free_mem.txt
+df -h > ~/backups/diskuse/disk_usage.txt
+lsof > ~/backups/openlist/open_list.txt
+df -kh > ~/backups/freedisk/free_disk.txt
+
     ```
 
 3. Command to make the `system.sh` script executable:
-
+chmod +x system.sh
 **Optional**
 - Commands to test the script and confirm its execution:
+sudo ./system.sh
+~/backup/<filename> cat *
 
 **Bonus**
 - Command to copy `system` to system-wide cron directory:
-
+sudo cp system.sh /etc/cron.weekly
 ---
 
 ### Step 4. Manage Log File Sizes
@@ -57,37 +67,39 @@ Save and submit the completed file for your homework submission.
     Configure a log rotation scheme that backs up authentication messages to the `/var/log/auth.log`.
 
     - Add your config file edits below:
-
-    ```bash
-    [Your logrotate scheme edits here]
-    ```
----
-
-### Bonus: Check for Policy and File Violations
+/var/log/auth.log {
+rotate 7
+daily
+notifempty
+compress
+delaycompress
+endscript
+}
+    Bonus: Check for Policy and File Violations
 
 1. Command to verify `auditd` is active:
-
+sudo systemctl status auditd
 2. Command to set number of retained logs and maximum log file size:
-
+sudo nano /etc/audit/auditd.conf
     - Add the edits made to the configuration file below:
+max_log_file = 35
+num_logs = 7
 
-    ```bash
-    [Your solution edits here]
-    ```
 
 3. Command using `auditd` to set rules for `/etc/shadow`, `/etc/passwd` and `/var/log/auth.log`:
 
 
     - Add the edits made to the `rules` file below:
 
-    ```bash
-    [Your solution edits here]
-    ```
+-w /etc/shadow -p wra -hashpass_audit shadow
+-w /etc/passwd -p wra -userpass_audit passwd
+-w /var/log/auth.log -p wra -authlog_audit shadow
+
 
 4. Command to restart `auditd`:
-
+sudo systemctl restart auditd
 5. Command to list all `auditd` rules:
-
+sudo auditctl -l
 6. Command to produce an audit report:
 
 7. Create a user with `sudo useradd attacker` and produce an audit report that lists account modifications:
