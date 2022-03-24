@@ -8,42 +8,51 @@ Save and submit the completed file for your homework submission.
 
 ### Step 1: Create, Extract, Compress, and Manage tar Backup Archives
 
-1. Command to **extract** the `TarDocs.tar` archive to the current directory:
+1. Command to **extract** the `TarDocs.tar` archive to the current directory: tar -xvf TarDocs.tar -C ~/Projects/
 
-2. Command to **create** the `Javaless_Doc.tar` archive from the `TarDocs/` directory, while excluding the `TarDocs/Documents/Java` directory:
+2. Command to **create** the `Javaless_Doc.tar` archive from the `TarDocs/` directory, while excluding the `TarDocs/Documents/Java` directory: tar cvf Javaless_Doc --exclude="TarDocs/Documents/Java" TarDocs/
 
-3. Command to ensure `Java/` is not in the new `Javaless_Docs.tar` archive:
+
+3. Command to ensure `Java/` is not in the new `Javaless_Docs.tar` archive: tar -tvf Javaless_Docs.tar | grep "java"
 
 **Bonus** 
 - Command to create an incremental archive called `logs_backup_tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
 
 #### Critical Analysis Question
 
-- Why wouldn't you use the options `-x` and `-c` at the same time with `tar`?
+- Why wouldn't you use the options `-x` and `-c` at the same time with `tar`? Because c is to compress a file and x is extracts a compress file. They are kinda opposites of each other.
 
 ---
 
 ### Step 2: Create, Manage, and Automate Cron Jobs
 
-1. Cron job for backing up the `/var/log/auth.log` file:
+1. Cron job for backing up the `/var/log/auth.log` file: 
+0 6 * * 3 tar -cvf var/backup/auth_backup.tgz /var/log/auth.log >/dev/null 2>&1
+5 6 * * 3 gzip /auth_backup.tgz >/dev/null 2>&1 
+
 
 ---
 
 ### Step 3: Write Basic Bash Scripts
 
-1. Brace expansion command to create the four subdirectories:
+1. Brace expansion command to create the four subdirectories: ~/backups$ mkdir {freeman,diskuse,openlist,freedisk}
 
 2. Paste your `system.sh` script edits below:
 
     ```bash
     #!/bin/bash
-    [Your solution script contents here]
+    #!/bin/ba
+    free -h > ~/backups/freeman/free_mem.txt
+    du -h > ~/backups/diskuse/disk_usage.txt
+    lsof > ~/backups/openlist/open_list.txt
+    df -h > ~/backups/freeman/free_disk.txt
     ```
 
-3. Command to make the `system.sh` script executable:
+3. Command to make the `system.sh` script executable: chmod +x system.sh
 
 **Optional**
-- Commands to test the script and confirm its execution:
+- Commands to test the script and confirm its execution: sudo ./system.sh
+~/backups/<filename> cat *
 
 **Bonus**
 - Command to copy `system` to system-wide cron directory:
@@ -59,20 +68,28 @@ Save and submit the completed file for your homework submission.
     - Add your config file edits below:
 
     ```bash
-    [Your logrotate scheme edits here]
+    /var/log/auth.log {
+        rotate 7
+        daily
+        notifempty
+        compressdelaycompress
+        endscript
+    }
     ```
 ---
 
 ### Bonus: Check for Policy and File Violations
 
 1. Command to verify `auditd` is active:
+    sudo systemctl status auditd
 
-2. Command to set number of retained logs and maximum log file size:
+2. Command to set number of retained logs and maximum log file size: sudo nano /etc/audit/auditd.conf
 
     - Add the edits made to the configuration file below:
 
-    ```bash
-    [Your solution edits here]
+    ```
+    max_log_file = 35
+    num_logs = 7
     ```
 
 3. Command using `auditd` to set rules for `/etc/shadow`, `/etc/passwd` and `/var/log/auth.log`:
@@ -80,13 +97,15 @@ Save and submit the completed file for your homework submission.
 
     - Add the edits made to the `rules` file below:
 
-    ```bash
-    [Your solution edits here]
+    ```
+    -w /etc/shadow -p wra -hashpass_audit shadow
+    -w /etc/passwd -p wra -userpass_audit passwd
+    -w /var/log/auth.log -p wra -authlog_audit shadow
     ```
 
-4. Command to restart `auditd`:
+4. Command to restart `auditd`: sudo systemctl restart auditd
 
-5. Command to list all `auditd` rules:
+5. Command to list all `auditd` rules: sudo auditctl -l
 
 6. Command to produce an audit report:
 
