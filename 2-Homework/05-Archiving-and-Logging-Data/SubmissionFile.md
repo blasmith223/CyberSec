@@ -26,7 +26,7 @@ They will Create a new archive and Xtract the files.
 ### Step 2: Create, Manage, and Automate Cron Jobs
 
 1. Cron job for backing up the `/var/log/auth.log` file:
-
+* 6 * * 3 sudo tar -cvf auth_backup.tgz /var/log/auth.log >/dev/null 2>&1
 ---
 
 ### Step 3: Write Basic Bash Scripts
