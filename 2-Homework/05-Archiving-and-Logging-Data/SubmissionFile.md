@@ -11,16 +11,16 @@ Save and submit the completed file for your homework submission.
 1. Command to **extract** the `TarDocs.tar` archive to the current directory:
 sudo tar -xvf TarDocs.tar -C /Projects/
 2. Command to **create** the `Javaless_Doc.tar` archive from the `TarDocs/` directory, while excluding the `TarDocs/Documents/Java` directory:
-
+sudo tar -cf ~/Projects/Javaless_Docs.tar --exclude "Documents/Java" ~/Projects/TarDocs/Documents
 3. Command to ensure `Java/` is not in the new `Javaless_Docs.tar` archive:
-
+tar -tf Javaless_Docs.tar | grep "Java"
 **Bonus** 
 - Command to create an incremental archive called `logs_backup_tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
 
 #### Critical Analysis Question
 
 - Why wouldn't you use the options `-x` and `-c` at the same time with `tar`?
-
+They will Create a new archive and Xtract the files.
 ---
 
 ### Step 2: Create, Manage, and Automate Cron Jobs
