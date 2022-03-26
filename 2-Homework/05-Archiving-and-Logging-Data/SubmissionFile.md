@@ -32,19 +32,25 @@ They will Create a new archive and Xtract the files.
 ### Step 3: Write Basic Bash Scripts
 
 1. Brace expansion command to create the four subdirectories:
-
+mkdir -p  {~/backups/freemem,~/backups/diskuse,~/backups/openlist,~/backups/freedisk}
 2. Paste your `system.sh` script edits below:
 
-    ```bash
-    #!/bin/bash
-    [Your solution script contents here]
-    ```
-
+#!/bin/bash
+free -h >> ~/backups/freemem/free_mem.txt && date +%T/%d >> ~/backups/freemem/free_mem.txt
+df -h >> ~/backups/diskuse/disk_usage.txt && date +%T/%d >> ~/backups/diskuse/disk_usage.txt
+lsof >> ~/backups/openlist/open_list.txt && date +%T/%d >> ~/backups/openlist/open_list.txt
+df -h >> ~/backups/freedisk/free_disk.txt && date +%T/%d >> ~/backups/freedisk/free_disk.txt
+    I played a little and thought having the time and date display each time it runs would be beneficial and fun for learning.  All commands worked
 3. Command to make the `system.sh` script executable:
-
+chmod -x system.sh
 **Optional**
 - Commands to test the script and confirm its execution:
-
+to display whole file.
+more ~/backups/diskuse/disk_usage.txt 
+more ~/backups/freemem/free_mem.txt 
+more ~/backups/openlist/open_list.txt 
+more ~/backups/freedisk/free_disk.txt
+or use more to show to 10 lines or tail to show bottem 10. 
 **Bonus**
 - Command to copy `system` to system-wide cron directory:
 
@@ -59,7 +65,12 @@ They will Create a new archive and Xtract the files.
     - Add your config file edits below:
 
     ```bash
-    [Your logrotate scheme edits here]
+/var/log/auth.log {
+weekely
+rotate 7
+notifempty
+delaycompress
+missingok}
     ```
 ---
 
