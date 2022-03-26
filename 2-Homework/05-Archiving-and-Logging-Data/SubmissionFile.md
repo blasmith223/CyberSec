@@ -50,7 +50,7 @@ more ~/backups/diskuse/disk_usage.txt
 more ~/backups/freemem/free_mem.txt 
 more ~/backups/openlist/open_list.txt 
 more ~/backups/freedisk/free_disk.txt
-or use more to show to 10 lines or tail to show bottem 10. 
+or use more to show to 10 lines or tail to show bottom 10. 
 **Bonus**
 - Command to copy `system` to system-wide cron directory:
 
