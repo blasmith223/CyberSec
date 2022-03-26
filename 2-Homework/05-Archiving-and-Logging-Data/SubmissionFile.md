@@ -65,12 +65,12 @@ or use more to show to 10 lines or tail to show bottem 10.
     - Add your config file edits below:
 
     ```bash
-/var/log/auth.log {
+[/var/log/auth.log {
 weekely
 rotate 7
 notifempty
 delaycompress
-missingok}
+missingok}]
     ```
 ---
 
