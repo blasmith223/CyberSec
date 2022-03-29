@@ -8,11 +8,13 @@ Save and submit the completed file for your homework submission.
 
 ### Step 1: Create, Extract, Compress, and Manage tar Backup Archives
 
-1. Command to **extract** the `TarDocs.tar` archive to the current directory:
+1. Command to **extract** the `TarDocs.tar` archive to the current directory: tar -xvvf TarDocs.tar
 
 2. Command to **create** the `Javaless_Doc.tar` archive from the `TarDocs/` directory, while excluding the `TarDocs/Documents/Java` directory:
+tar cvvf Javaless_Docs.tar --exclude 'Java' ~/Projects/TarDocs/Documents
 
 3. Command to ensure `Java/` is not in the new `Javaless_Docs.tar` archive:
+ tar tvvf Javaless_Docs.tar | grep Java
 
 **Bonus** 
 - Command to create an incremental archive called `logs_backup_tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
@@ -20,27 +22,40 @@ Save and submit the completed file for your homework submission.
 #### Critical Analysis Question
 
 - Why wouldn't you use the options `-x` and `-c` at the same time with `tar`?
-
+-c creates an archive; -x executes an archive
 ---
 
 ### Step 2: Create, Manage, and Automate Cron Jobs
 
 1. Cron job for backing up the `/var/log/auth.log` file:
+0 6 * * 3 tar cvvf gzip /var/log/auth.log > /auth_backup.tgz
 
 ---
 
 ### Step 3: Write Basic Bash Scripts
 
-1. Brace expansion command to create the four subdirectories:
+1. Brace expansion command to create the four subdirectories: mkdir -p ~/backups/{freemem,diskuse,openlist,freedisk}
+
 
 2. Paste your `system.sh` script edits below:
 
     ```bash
     #!/bin/bash
-    [Your solution script contents here]
+#!/bin/bash
+echo free -h > ~/backups/freemem/free_mem.txt
+
+echo du -h > ~/backups/diskuse/disk_usage.txt
+
+echo lsof -h > ~/backups/openlist/open_list.txt
+
+echo df -h > ~/backups/freelist/free_disk.txt
+
+
     ```
 
-3. Command to make the `system.sh` script executable:
+3. Command to make the `system.sh` script executable
+sudo chmod +x system.sh
+
 
 **Optional**
 - Commands to test the script and confirm its execution:
@@ -57,6 +72,7 @@ Save and submit the completed file for your homework submission.
     Configure a log rotation scheme that backs up authentication messages to the `/var/log/auth.log`.
 
     - Add your config file edits below:
+/var/log/auth.log {rotate 49 weekly notifempty delaycompress compress missingok}
 
     ```bash
     [Your logrotate scheme edits here]
