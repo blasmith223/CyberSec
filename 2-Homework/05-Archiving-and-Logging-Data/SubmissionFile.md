@@ -15,7 +15,7 @@ Save and submit the completed file for your homework submission.
 3. Command to ensure `Java/` is not in the new `Javaless_Docs.tar` archive:
 
 **Bonus** 
-- Command to create an incremental archive called `logs_backup_tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
+- Command to create an incremental archive called `logs_backup.tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
 
 #### Critical Analysis Question
 
@@ -116,4 +116,4 @@ Save and submit the completed file for your homework submission.
     ```
 
 ---
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+© 2022 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.

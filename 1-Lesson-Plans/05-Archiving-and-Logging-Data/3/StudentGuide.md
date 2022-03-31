@@ -693,7 +693,7 @@ Launch an instance of Ubuntu using your VM environment.
 
 3. Now, we will need to edit the configuration file to add our settings.
 
-   - `root` user privileges are required to configure the `/etc/audit/audit.conf` file.
+   - `root` user privileges are required to configure the `/etc/audit/auditd.conf` file.
 
    - Run `sudo nano /etc/audit/auditd.conf`
 
@@ -899,4 +899,4 @@ Completing this demo required the following steps:
 
 -------
 
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+© 2022 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
