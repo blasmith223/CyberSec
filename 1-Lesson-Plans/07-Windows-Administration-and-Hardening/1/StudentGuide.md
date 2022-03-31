@@ -48,7 +48,7 @@ The following document contains a list of common Windows issues that may occur d
 
 ### Slideshow
 
-- The slides for today can be viewed on Google Drive here: [7.1 Slides](https://docs.google.com/presentation/d/1vIHx3ooUnDLjX7_Ol_DOd-VSvm8aQZF8pKiB7CGWPE4/edit)
+- The slides for today can be viewed on Google Drive here: [7.1 Slides](https://docs.google.com/presentation/d/1zxa5Y1sXPUSlTGig7oPq-rvgMfW7C7e3KIY46kO-zQU/edit#slide=id.g104f71ac7a5_0_1236)
 
 
 

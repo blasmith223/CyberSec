@@ -52,7 +52,7 @@ The following Google Doc contains a list of common Windows issues that occur dur
 
 ### Lesson Slideshow 
 
-The lesson slides are available on Google Drive here: [7.3 Slides](https://docs.google.com/presentation/d/1THlKwEbDwYmiAcvGYxx3F_0fH32NzB8pmW8_4etwwTU/edit)
+The lesson slides are available on Google Drive here: [7.3 Slides](https://docs.google.com/presentation/d/194D-oUrCJOftmul5OZs3BpJPvvzordL2MMssrm7m8vI/edit#slide=id.g105b1c0cdfb_0_0)
 
 ---
 
