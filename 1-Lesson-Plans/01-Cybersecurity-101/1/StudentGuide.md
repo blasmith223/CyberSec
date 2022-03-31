@@ -64,31 +64,31 @@ In this section, we will provide a high-level overview of the course, including 
 
 You can think of this boot camp as six modules that each focus on an important piece of the vast cybersecurity landscape: 
 
-**Module 1**: Security Fundamentals (Units 1-2)
+**Module 1**: Security Fundamentals
 
 - The first two weeks of the program will be largely conceptual. This week, you will learn how to think like a security professional, look at the cybersecurity career landscape, and get an introduction to certifications in the space. 
 
 - Next week, we will look at governance, risk, and compliance. You will look at security from an organizational perspective via governance, risk, and compliance, and how these topics affect security controls and other decisions.
 
-**Module 2**: System Administration (Unit 3-7)
+**Module 2**: System Administration
 
 - Beginning in Unit 3, we will start using technical lab environments to complete activities. You will get comfortable using the command line and hone your systems administration skills in the several units that follow. 
 
 - We will cover both Linux and Windows systems, and dive into programming with both Bash and PowerShell. You will configure and audit servers, and harden them from malicious attacks.
 
-**Module 3**: Networks and Network Security and Project 1 (Units 8-13)
+**Module 3**: Networks and Network Security
 
 - Security professionals are expected to have a strong foundation in networking. In this module we’ll cover topics such as network configuration, design, ports, protocols, and data communication. 
 
 - We’ll get hands-on practice analyzing data packets on the wire and investigating network security attacks and hardening, and cover a variety of topics in cryptography. This module will also look at cloud virtualization and security, and you will complete your first project.
 
-**Module 4**: Offensive Security (Units 14-17)
+**Module 4**: Offensive Security
 
 - With our networking foundation now established, we’ll look at a variety of offensive topics in security. 
 
 - We’ll start with web architecture and dive into common web vulnerabilities and the hardening techniques associated with them. We’ll then cover ethical hacking and penetration testing, and will use tools like Metasploit.
 
-**Module 5**: Defensive Security and Project 2 (Units 18-21)
+**Module 5**: Defensive Security 
 
 - We’ll now look at defensive security monitoring and spend a few weeks diving into SIEM with Splunk. We will set up security monitoring, and create alerts, dashboards, and custom reports. 
 
@@ -96,11 +96,7 @@ You can think of this boot camp as six modules that each focus on an important p
 
 **Module 6**: Review and Final Projects (Units 22-24)
 
-- At this point, we’ve covered a lot! It’s time for some focused certification and career prep and review. We will focus primarily on the Security+ exam but will also spend one day of our Certification unit on the CISSP and CEH exams. 
-
-- There will also be a short unit on career prep, where we will hone our resumes, sharpen our networking skills, and get practice with both behavioral and technical interviewing. 
-
-- We will finish the program with a final project.
+- At this point, we’ve covered a lot! It’s time for some focused certification and career prep and review. We will focus primarily on the Security+ exam but will also introduce other relevant exams. In the career prep material, we will sharpen our networking skill  and get practice with both behavioral and technical interviewing. 
 
 #### Example Assignments
 
@@ -116,13 +112,18 @@ Let's discuss some examples of the assignments you will complete during this cou
 
 #### Projects
 
-These modules and assignments will culminate in three projects:
+These modules and assignments will culminate in four projects:
 
-- **Project 1: ELK Stack**. The first project follows the Networking and Cloud Security units. You will deploy an ELK monitoring stack within your virtual networks.
+- **Project 1: Securing Cloud Apps:**: In the first project week, you will build, secure, and protect a cloud application. You also contribute to the contents of this application by writing your very own cybersecurity blog post!
 
-- **Project 2: Red vs. Blue Team**. You will work as penetration testers and SOC analysts to attack and monitor vulnerable VMs. 
+- **Project 2: Offensive Security CTF**: We will compete in a three-day CTF to attack a fictional organization to determine their vulnerabilities.  
 
-- **Project 3: Final Project**. In this second Red vs. Blue Team project, you will exploit a vulnerable web application, create dashboards to see alerts in real time, and analyze live traffic on a virtual network. 
+- **Project 3: Building a Monitoring Solution**: You will design a custom monitoring solution for a fictional organization, monitoring the environment during a series of simulated attacks.  
+
+- **Project 4: bootCon** In the final project, you will present independently researched projects that demonstrate one of the following: 
+  - Exploiting a vulnerability of an IOT device.
+  - Developing code or a program that can complete a cybersecurity task.
+  - Demonstration of how a cybersecurity tool that was not covered in class can accomplish a specific goal.
 
 #### Tools We'll Use
 
@@ -204,12 +205,11 @@ Azure Lab Services will be used in the following units:
 - Pentesting I and II
 - Project 2
 - Forensics
-- Final Project
 
 
 #### Personal Azure Accounts
 
-During Units 12 (Cloud Security) and 13 (Project 1) you will be using personal Azure accounts. These personal accounts are necessary to deploy secure virtual networks to your own personal cloud environments. We do not allow students to deploy networks to Trilogy-owned cloud environments for security reasons.
+During the Cloud Security and Securing Cloud Apps (Project 1) units, students will use personal Azure accounts. Students need these personal accounts in order to deploy secure virtual networks to their own personal cloud environments. We do not allow students to deploy networks to Trilogy-owned cloud environments for security reasons.
 
 You must register yourself for these personal Azure accounts, and will do so in class during Unit 11, Day 3.  
 
