@@ -123,8 +123,8 @@ Below is an example of a completed password policy:
 
   For example, the following passwords are legal for the user guest:
 
-  - CloGyPTioNEntEDist
-  - CloGyPTioNEntEDist
+  - CloGyPTioNEntEDist5$
+  - coffee&Donuts975
   - n0tparticularly!strong
 
   The following password is illegal:
